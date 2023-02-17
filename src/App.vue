@@ -5,22 +5,15 @@ import { ref } from "vue";
 import CreateTodo from "./components/CreateTodo.vue";
 import TodoItem from "./components/TodoItem.vue";
 
-const todoDummy = ref([
-  {
-    title: "Test todo 1",
-    completed: false,
-  },
-  {
-    title: "Test todo 2",
-    completed: false,
-  },
-]);
+import store from "./store/store";
+
+const todos = store.state.todos;
 </script>
 
 <template>
   <h2 class="todo-text" style="margin-bottom: 24px">Vue To-Do App</h2>
   <CreateTodo />
-  <div class="todo-list" v-for="(todo, index) in todoDummy" :key="index">
+  <div class="todo-list" v-for="(todo, index) in todos" :key="index">
     <TodoItem :title="todo.title" :completed="todo.completed" />
   </div>
 </template>

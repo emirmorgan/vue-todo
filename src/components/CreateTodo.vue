@@ -1,4 +1,31 @@
-<script></script>
+<script>
+import store from "../store/store";
+
+export default {
+  methods: {
+    handleTodo(e) {
+      this.todo = e.target.value;
+
+      //Submit to-do
+      if (
+        e.key === "Enter" &&
+        this.todo !== "" &&
+        this.todo.match(/^ *$/) === null
+      ) {
+        e.target.value = ""; //Clear the input
+
+        //Create a todo
+        store.commit("addTodo", this.todo);
+      }
+    },
+  },
+  data() {
+    return {
+      todo: "",
+    };
+  },
+};
+</script>
 
 <template>
   <div class="todo-box">
@@ -6,8 +33,10 @@
       class="todo-input"
       type="text"
       placeholder="I'm gonna finish my homework."
+      @keyup="(e) => handleTodo(e)"
+      :value="this.todo"
     />
-    <button>+</button>
+    <button @click="handleTodo">+</button>
   </div>
 </template>
 

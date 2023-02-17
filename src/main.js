@@ -3,4 +3,7 @@ import App from "./App.vue";
 
 import "./assets/main.css";
 
-createApp(App).mount("#app");
+//Vuex store
+import store from "./store/store";
+
+createApp(App).use(store).mount("#app");
