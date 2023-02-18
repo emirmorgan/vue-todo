@@ -1,6 +1,13 @@
 <script>
+import store from "../store/store";
+
 export default {
-  props: ["title", "completed"],
+  props: ["id", "title", "completed"],
+  methods: {
+    removeTodo() {
+      store.commit("deleteTodo", this.id);
+    },
+  },
 };
 </script>
 
@@ -8,7 +15,7 @@ export default {
   <div class="todo-box" :style="completed ? 'opacity: 50%' : 'opacity: 100%'">
     <p :class="completed ? 'todo-text text-done' : 'todo-text'">{{ title }}</p>
     <button>✓</button>
-    <button>✗</button>
+    <button @click="removeTodo">✗</button>
   </div>
 </template>
 

@@ -14,7 +14,7 @@ const todos = store.state.todos;
   <h2 class="todo-text" style="margin-bottom: 24px">Vue To-Do App</h2>
   <CreateTodo />
   <div class="todo-list" v-for="(todo, index) in todos" :key="index">
-    <TodoItem :title="todo.title" :completed="todo.completed" />
+    <TodoItem :title="todo.title" :completed="todo.completed" :id="index" />
   </div>
 </template>
 
