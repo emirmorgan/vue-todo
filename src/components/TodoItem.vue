@@ -7,6 +7,9 @@ export default {
     removeTodo() {
       store.commit("deleteTodo", this.id);
     },
+    completeTodo() {
+      store.commit("completeTodo", this.id);
+    },
   },
 };
 </script>
@@ -14,7 +17,7 @@ export default {
 <template>
   <div class="todo-box" :style="completed ? 'opacity: 50%' : 'opacity: 100%'">
     <p :class="completed ? 'todo-text text-done' : 'todo-text'">{{ title }}</p>
-    <button>✓</button>
+    <button @click="completeTodo">✓</button>
     <button @click="removeTodo">✗</button>
   </div>
 </template>

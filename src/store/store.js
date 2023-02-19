@@ -16,5 +16,19 @@ export default createStore({
     deleteTodo(state, index) {
       state.todos.splice(index, 1);
     },
+    completeTodo(state, index) {
+      if (state.todos[index].completed === true) {
+        state.todos[index].completed = false;
+      } else {
+        state.todos[index].completed = true;
+      }
+
+      console.log(index, state.todos[index]);
+    },
+  },
+  getters: {
+    getDone(state) {
+      state.todos.filter((todo) => todo.completed === true);
+    },
   },
 });
