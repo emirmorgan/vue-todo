@@ -18,6 +18,13 @@ export default {
         store.commit("addTodo", this.todo);
       }
     },
+    handleSubmit() {
+      if (this.todo !== "" && this.todo.match(/^ *$/) === null) {
+        store.commit("addTodo", this.todo);
+
+        this.todo = "";
+      }
+    },
   },
   data() {
     return {
@@ -36,7 +43,7 @@ export default {
       @keyup="(e) => handleTodo(e)"
       :value="this.todo"
     />
-    <button @click="handleTodo">+</button>
+    <button @click="handleSubmit">+</button>
   </div>
 </template>
 
