@@ -14,7 +14,30 @@ const todos = store.state.todos;
   <h2 class="todo-text" style="margin-bottom: 24px">Vue To-Do App</h2>
   <CreateTodo />
   <div class="todo-list" v-for="(todo, index) in todos" :key="index">
-    <TodoItem :title="todo.title" :completed="todo.completed" :id="index" />
+    <TodoItem
+      v-if="todo.completed === false"
+      :title="todo.title"
+      :completed="todo.completed"
+      :id="index"
+    />
+  </div>
+  <div class="todo-completed" style="margin-top: 16px">
+    <details style="width: 100%">
+      <summary style="user-select: none">
+        Completed Tasks
+        <span class="count-badge">{{
+          todos.filter((todo) => todo.completed === true).length
+        }}</span>
+      </summary>
+      <div class="todo-list" v-for="(todo, index) in todos" :key="index">
+        <TodoItem
+          v-if="todo.completed === true"
+          :title="todo.title"
+          :completed="todo.completed"
+          :id="index"
+        />
+      </div>
+    </details>
   </div>
 </template>
 
@@ -26,9 +49,6 @@ const todos = store.state.todos;
   align-items: center;
 
   width: 100%;
-
-  gap: 12px;
-  margin-top: 24px;
 }
 .todo-text {
   cursor: crosshair;
@@ -39,5 +59,20 @@ const todos = store.state.todos;
   -webkit-text-stroke: #000;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
+}
+.todo-completed {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+}
+.count-badge {
+  cursor: default;
+
+  margin-left: 4px;
+  padding: 3px 8px;
+  border: solid 1px #000;
+  border-radius: 4px;
+
+  background-color: var(--primary-color);
 }
 </style>

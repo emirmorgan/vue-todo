@@ -47,6 +47,7 @@ export default {
   max-width: 680px;
   border: solid 1px #000;
 
+  margin-bottom: 12px;
   padding: 16px;
   gap: 12px;
 }

@@ -22,13 +22,6 @@ export default createStore({
       } else {
         state.todos[index].completed = true;
       }
-
-      console.log(index, state.todos[index]);
-    },
-  },
-  getters: {
-    getDone(state) {
-      state.todos.filter((todo) => todo.completed === true);
     },
   },
 });

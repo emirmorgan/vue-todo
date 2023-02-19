@@ -37,6 +37,9 @@ export default {
   padding: 16px;
   gap: 12px;
 
+  margin-top: 12px;
+  margin-bottom: 12px;
+
   transition: all 300ms ease;
 }
 
